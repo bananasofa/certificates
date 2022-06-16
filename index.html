@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+      body {
+        font-family: 'Merriweather', serif;
+        font-size: 1rem;
+        min-width: 18em;
+        min-height: 28em;
+        margin: 10px;
+        padding: 10px;
+        align-content: center;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        line-height: 1.1;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size: 40px;
+        margin: 0px;
+      }
+
+      h3 {
+        font-size: 1rem;
+        margin-bottom: 50px;
+      }
+
+      h4 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      #result {
+        display: none;
+      }
+
+      #theDate {
+        font-size: 1rem;
+        display: inline-block;
+      }
+
+      #certificate {
+        border: 1px solid #777777;
+        padding: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 1vh;
+        min-width: 70em;
+        max-width: 75em;
+      }
+
+      #userdatainput {
+        height: 80%;
+        max-width: 500px;
+        padding: 1em;
+        margin: auto;
+        display: block;
+        align-items: center;
+      }
+
+      .my-input {
+        font-size: 1rem;
+        font-family: 'Arial';
+        color: #232323;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid #232323;
+        background-color: #ffffff;
+        text-transform: lowercase;
+        width: 300px;
+      }
+
+      .my-submit {
+        font-size: 1rem;
+        font-family: 'Arial';
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid #ffffff;
+        background-color: #232323;
+        margin-top: 30px;
+        cursor: pointer;
+      }
+
+      .my-submit-secondary {
+        font-size: 1rem;
+        font-family: 'Arial';
+        color: #59595B;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid #999999;
+        background-color: #EFEFEE;
+        margin-top: 30px;
+        cursor: pointer;
+      }
+
+      .my-submit-secondary:hover {
+        font-size: 1rem;
+        font-family: 'Arial';
+        color: #ffffff;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid #ffffff;
+        background-color: #19AAE2;
+        margin-top: 30px;
+        cursor: pointer;
+      }
+
+      .button {
+        font-size: 2rem;
+        font-family: 'Arial';
+        color: #f8f8f8;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid #232323;
+        background-color: #232323;
+      }
+
+      #courseName {
+        text-transform: capitalize;
+        font-size: 40px;
+        max-width: 100%;
+        text-align: center;
+      }
+
+      #clientName {
+        text-transform: capitalize;
+        font-size: 60px;
+        max-width: 100%;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      #clientEmail {
+        text-transform: lowercase;
+        font-size: 25px;
+        margin-bottom: 100px;
+      }
+
+      #saveFile {
+        padding-top: 0px;
+        width: 100%;
+        text-align: left;
+        margin: auto;
+      }
+
+      #line1 {
+        margin: 20px;
+        font-size: 1.5rem;
+      }
+
+      #qrCode2 {
+        width: 10%;
+        height: 110px;
+        float: left;
+      }
+
+      #qrCode {
+        width: 10%;
+        height: 110px;
+        float: right;
+      }
+
+      #certHeader {
+        width: 50%;
+        text-align: center;
+        height: 110px;
+        display: inline-block;
+      }
+
+      .rightfloating {
+        text-align: center;
+      }
+
+      a {
+        color: #232323;
+      }
+
+      .printme {
+        width: 100%;
+        text-align: left;
+      }
+
+      @media print {
+        @page {
+          size: auto;
+          margin: 0mm;
+          min-height: 28em;
+          min-width: 20em;
+        }
+
+        .myDivToPrint {
+          background-color: white;
+          min-height: 28em;
+          min-width: 20em;
+          size: landscape;
+        }
+
+        .button {
+          display: none;
+        }
+
+        footer {
+          display: none;
+        }
+
+        header {
+          display: none;
+        }
+
+        .printme {
+          display: none;
+        }
+
+        #certificate {
+          border: 0px;
+        }
+      }
+    </style>
+    <script>
+      function displayMessage() {
+        var bananaSofa = ["pony", "luna", "pinky pie"];
+        let theWord = document.getElementById("theWordValue").value;
+        let clientName2 = document.getElementById("clientNameValue").value;
+        let clientEmail2 = document.getElementById("clientEmailvalue").value;
+        let courseName2 = document.getElementById("courseNameValue").value;
+        let instructorName2 = document.getElementById("instructorNameValue").value;
+        let theDate2 = document.getElementById("theDateValue").value;
+        if (bananaSofa.indexOf(theWord) !== -1) {
+          result.style.display = 'block';
+          userdatainput.style.display = 'none';
+          document.getElementById("clientName").innerHTML = clientName2;
+          document.getElementById("clientEmail").innerHTML = clientEmail2;
+          document.getElementById("courseName").innerHTML = courseName2;
+          document.getElementById("instructorName").innerHTML = instructorName2;
+          document.getElementById("theDate").innerHTML = theDate2;
+        } else {
+          alert("That is not the password")
+        }
+      }
+    </script>
+    <div id="userdatainput">
+      <img src="https://bananasofa.michelecristina.com/bear-banana.png" width="50px">
+      <p style="text-align:center">You did it! Good job! <strong>
+          <br>
+      </p>
+      <br>
+      <div id="line1"> Participant Name:</div>
+      <input type="text" id="clientNameValue" class="my-input" placeholder="John Smith" />
+      <div id="line1"> E-mail:</div>
+      <input type="text" id="clientEmailvalue" class="my-input" placeholder="johnsmith@example.com" />
+      <div id="line1"> Workshop:</div>
+      <input type="text" id="courseNameValue" class="my-input" placeholder="TMS collections" />
+      <div id="line1"> Instructor:</div>
+      <input type="text" id="instructorNameValue" class="my-input" placeholder="John Instructor" />
+      <div id="line1"> Date:</div>
+      <input type="text" id="theDateValue" class="my-input" placeholder="MM/DD/YYYY" />
+      <div id="line1"> Password:</div>
+      <input type="text" id="theWordValue" class="my-input" type="password" placeholder="type the password" />
+      <button onclick="displayMessage()" class="my-submit">Get your certificate</button>
+    </div>
+    <div id="result">
+      <div class="myDivToPrint">
+        <div id="certificate">
+          <div id="qrCode">
+            <img style="width:100px;" src="mainpage-QR-code.png">
+          </div>
+          <div id="certHeader">
+            <p>
+              <strong>Certificate of completition</strong>
+            </p>
+            <p style="margin-top:50px"> Presented to </p>
+          </div>
+          <div id="qrCode2"> &nbsp;</div>
+          <div id="clientName"></div>
+          <div id="clientEmail"></div>
+          <p>For the successful completion of </p>
+          <img src="https://bananasofa.michelecristina.com/bear-banana.png" width="150px">
+          <h2>
+            <div id="courseName"></div>
+          </h2>
+          </p>
+          <h3>Instructor: <div id="instructorName"></div>
+          </h3>
+          <p>Date:
+          <div id="theDate"></div>
+          </p>
+          <a href="http://www.bananasofa.com">BananaSofa.com</a>
+        </div>
+      </div>
+      <div class="printme" style="margin-bottom:30px;">
+        <button class="my-submit" onclick="window.print()">Print or Save PDF </button>
+        <a href="https://www.twitter.com/bananasofa/">
+          <button class="my-submit-secondary">Contact us </button>
+        </a>
+      </div>
+    </div>
+    </div>
